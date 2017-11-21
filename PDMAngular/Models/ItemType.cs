@@ -1,4 +1,5 @@
 ﻿using System;
+using System.ComponentModel.DataAnnotations;
 
 namespace PDMAngular.Models
 {
@@ -10,6 +11,8 @@ namespace PDMAngular.Models
 
         public string Description { get; set; }
 
+        [Required]
+        [StringLength(150)]
         public string Name { get; set; }
 
         public DateTime? UpdateDate { get; set; }
