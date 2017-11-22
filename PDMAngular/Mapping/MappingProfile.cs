@@ -9,6 +9,7 @@ namespace PDMAngular.Mapping
         public MappingProfile()
         {
             CreateMap<ItemType, ItemTypeResource>();
+            CreateMap<MachineType, MachineTypeResource>();
         }
     }
 }
