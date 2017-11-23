@@ -10,6 +10,10 @@ import { HomeComponent } from './components/home/home.component';
 import { FetchDataComponent } from './components/fetchdata/fetchdata.component';
 import { CounterComponent } from './components/counter/counter.component';
 import { ItemTypeFormComponent } from "./components/itemtype-form/itemtype-form.component";
+import { ItemTypeService } from "./services/itemtype.service";
+import { ItemFormComponent } from "./components/item-form/item-form.component";
+import { MachineTypeService } from "./services/machinetype.service";
+
 
 @NgModule({
     declarations: [
@@ -18,6 +22,7 @@ import { ItemTypeFormComponent } from "./components/itemtype-form/itemtype-form.
         CounterComponent,
         FetchDataComponent,
         ItemTypeFormComponent,
+        ItemFormComponent,
         HomeComponent
     ],
     imports: [
@@ -30,9 +35,15 @@ import { ItemTypeFormComponent } from "./components/itemtype-form/itemtype-form.
             { path: 'counter', component: CounterComponent },
             { path: 'fetch-data', component: FetchDataComponent },
             { path: 'item-types/new', component: ItemTypeFormComponent },
+            { path: 'item/new', component: ItemFormComponent },
             { path: '**', redirectTo: 'home' }
         ])
+    ],
+    providers: [
+        ItemTypeService,
+        MachineTypeService
     ]
 })
 export class AppModuleShared {
 }
+
