@@ -7,6 +7,7 @@ namespace PDMAngular.Persistence
     {
         public DbSet<ItemType> ItemTypes { get; set; }
         public DbSet<MachineType> MachineTypes { get; set; }
+        public DbSet<Item> Items { get; set; }
 
         public PdmDbContext(DbContextOptions<PdmDbContext> options) : base(options)
         {
