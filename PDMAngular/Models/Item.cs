@@ -21,10 +21,12 @@ namespace PDMAngular.Models
 
         public int? Thickness { get; set; }
 
+        public bool Elastic { get; set; }
+
         [Required]
         [StringLength(150)]
         public string MadeBy { get; set; }
-
+        
         public DateTime CreateDate { get; set; }
 
         public string Color { get; set; }
@@ -32,7 +34,7 @@ namespace PDMAngular.Models
         public string Name { get; set; }
 
         public DateTime? UpdateDate { get; set; }
-
+        
         public string UserId { get; set; }
 
         public ItemType ItemType { get; set; }
@@ -43,8 +45,7 @@ namespace PDMAngular.Models
 
         public int MachineTypeId { get; set; }
 
-
-
+        public Status Status { get; set; }
 
     }
 }
