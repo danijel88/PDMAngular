@@ -10,7 +10,7 @@ import { MachineTypeService } from '../../services/machinetype.service';
 export class ItemFormComponent implements OnInit {
     itemTypes: any;
     machineTypes: any;
-    item= {};
+    item = {};
 
     constructor(private itemTypeService: ItemTypeService,
         private mahcineTypeService: MachineTypeService) {

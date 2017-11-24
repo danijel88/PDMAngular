@@ -4,6 +4,50 @@
 </p>
 <form>
     <div class="form-group">
+        <label for="internalCode">Internal Code</label>
+        <input type="text" value="" class="form-control" />
+    </div>
+    <div class="form-group">
+        <label for="nameOnItem">Name On Item</label>
+        <input type="text" value="" class="form-control" />
+    </div>
+    <div class="form-group">
+        <label for="description">Description</label>
+        <input type="text" value="" class="form-control" />
+    </div>
+    <div class="form-group">
+        <label for="enter">Enter</label>
+        <input type="number" value="" class="form-control" />
+    </div>
+    <div class="form-group">
+        <label for="exit">Exit</label>
+        <input type="number" value="" class="form-control" />
+    </div>
+    <div class="form-group">
+        <label for="thickness">Thickness</label>
+        <input type="number" value="" class="form-control" />
+    </div>
+    <div class="form-group">
+        <label for="band">Band</label>
+        <input type="number" value="" class="form-control" />
+    </div>
+    <div class="form-group">
+        <label for="elastic">Elastic</label>
+        <input type="checkbox" class="form-control" name="elastic" />
+    </div>
+    <div class="form-group">
+        <label for="color">Color</label>
+        <input type="text" class="form-control" />
+    </div>
+    <div class="form-group">
+        <label for="madeBy">Made By</label>
+        <input type="text" class="form-control" />
+    </div>
+    <div class="form-group">
+        <label for="status">Status</label>
+
+    </div>
+    <div class="form-group">
         <label for="itemType">Item Type</label>
         <select id="itemType" class="form-control" [(ngModel)]="item.itemType" name="itemType">
             <option></option>
@@ -12,9 +56,11 @@
     </div>
     <div class="form-group">
         <label for="machineType">Machine Type</label>
-        <select class="form-control" value="{{mt.id}}" [(ngModel)]="item.machineType" name="machineType">
+        <select class="form-control" [(ngModel)]="item.machineType" name="machineType">
             <option></option>
             <option *ngFor="let mt of machineTypes" value="{{mt.id}}">{{mt.name}}</option>
         </select>
     </div>
+
+
 </form>
