@@ -1,4 +1,5 @@
-﻿using System;
+﻿using PDMAngular.Models;
+using System;
 
 namespace PDMAngular.Controllers.Resources
 {
@@ -18,6 +19,8 @@ namespace PDMAngular.Controllers.Resources
 
         public int? Thickness { get; set; }
 
+        public bool Elastic { get; set; }
+
         public string MadeBy { get; set; }
 
         public DateTime CreateDate { get; set; }
@@ -35,5 +38,8 @@ namespace PDMAngular.Controllers.Resources
 
 
         public int MachineTypeId { get; set; }
+
+        public Status Status { get; set; }
+
     }
 }
