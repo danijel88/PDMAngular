@@ -5,6 +5,7 @@ using Microsoft.EntityFrameworkCore.Metadata;
 using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage;
 using Microsoft.EntityFrameworkCore.Storage.Internal;
+using PDMAngular.Models;
 using PDMAngular.Persistence;
 using System;
 
@@ -33,6 +34,8 @@ namespace PDMAngular.Migrations
 
                     b.Property<string>("Description");
 
+                    b.Property<bool>("Elastic");
+
                     b.Property<int?>("Enter");
 
                     b.Property<int?>("Exit");
@@ -50,6 +53,8 @@ namespace PDMAngular.Migrations
                         .HasMaxLength(150);
 
                     b.Property<string>("Name");
+
+                    b.Property<int>("Status");
 
                     b.Property<int?>("Thickness");
 
