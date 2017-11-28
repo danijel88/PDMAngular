@@ -26,7 +26,7 @@ namespace PDMAngular.Migrations
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd();
 
-                    b.Property<int?>("Band");
+                    b.Property<decimal?>("Band");
 
                     b.Property<string>("Color");
 
@@ -36,9 +36,9 @@ namespace PDMAngular.Migrations
 
                     b.Property<bool>("Elastic");
 
-                    b.Property<int?>("Enter");
+                    b.Property<decimal?>("Enter");
 
-                    b.Property<int?>("Exit");
+                    b.Property<decimal?>("Exit");
 
                     b.Property<string>("InternalCode")
                         .IsRequired()
@@ -56,7 +56,7 @@ namespace PDMAngular.Migrations
 
                     b.Property<int>("Status");
 
-                    b.Property<int?>("Thickness");
+                    b.Property<decimal?>("Thickness");
 
                     b.Property<DateTime?>("UpdateDate");
 
