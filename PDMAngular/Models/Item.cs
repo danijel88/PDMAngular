@@ -13,13 +13,13 @@ namespace PDMAngular.Models
 
         public string Description { get; set; }
 
-        public int? Band { get; set; }
+        public decimal? Band { get; set; }
 
-        public int? Enter { get; set; }
+        public decimal? Enter { get; set; }
 
-        public int? Exit { get; set; }
+        public decimal? Exit { get; set; }
 
-        public int? Thickness { get; set; }
+        public decimal? Thickness { get; set; }
 
         public bool Elastic { get; set; }
 
