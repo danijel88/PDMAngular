@@ -9,16 +9,23 @@ namespace PDMAngular.Mapping
         public MappingProfile()
         {
             //Domain to API Resource
-            CreateMap<ItemType, ItemTypeResource>();
+            CreateMap<ItemType, KeyValuePairResource>();
             CreateMap<MachineType, MachineTypeResource>();
-            CreateMap<Item, ItemResource>();
+            CreateMap<Item, SaveItemResource>();
+            CreateMap<ItemHist, SaveItemResource>();
+            CreateMap<Item, ItemResource>()
+                .ForMember(ir => ir.MachineType, opt => opt.MapFrom(i => new MachineTypeResource { Id = i.MachineType.Id, Name = i.MachineType.Name }))
+                .ForMember(ir => ir.ItemType, opt => opt.MapFrom(i => new KeyValuePairResource { Id = i.ItemType.Id, Name = i.ItemType.Name }));
 
 
             //API Resource to Domain
-            CreateMap<ItemResource, Item>()
+            CreateMap<SaveItemResource, Item>()
                 .ForMember(i => i.Id, opt => opt.Ignore());
-            CreateMap<ItemTypeResource, ItemType>();
+            CreateMap<KeyValuePairResource, ItemType>();
             CreateMap<MachineTypeResource, MachineType>();
+            CreateMap<SaveItemResource, ItemHist>();
+            CreateMap<ItemResource, Item>();
+
 
         }
     }
