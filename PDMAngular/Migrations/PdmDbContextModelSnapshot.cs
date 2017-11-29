@@ -64,11 +64,70 @@ namespace PDMAngular.Migrations
 
                     b.HasKey("Id");
 
+                    b.HasIndex("InternalCode")
+                        .IsUnique();
+
                     b.HasIndex("ItemTypeId");
 
                     b.HasIndex("MachineTypeId");
 
+                    b.HasIndex("MadeBy");
+
                     b.ToTable("Items");
+                });
+
+            modelBuilder.Entity("PDMAngular.Models.ItemHist", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd();
+
+                    b.Property<decimal?>("Band");
+
+                    b.Property<string>("Color");
+
+                    b.Property<DateTime>("CreateDate");
+
+                    b.Property<string>("Description");
+
+                    b.Property<bool>("Elastic");
+
+                    b.Property<decimal?>("Enter");
+
+                    b.Property<decimal?>("Exit");
+
+                    b.Property<string>("InternalCode")
+                        .IsRequired()
+                        .HasMaxLength(50);
+
+                    b.Property<int>("ItemId");
+
+                    b.Property<int>("ItemTypeId");
+
+                    b.Property<int>("MachineTypeId");
+
+                    b.Property<string>("MadeBy")
+                        .IsRequired()
+                        .HasMaxLength(150);
+
+                    b.Property<string>("Name");
+
+                    b.Property<int>("Status");
+
+                    b.Property<decimal?>("Thickness");
+
+                    b.Property<DateTime?>("UpdateDate");
+
+                    b.Property<string>("UserId");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("ItemId");
+
+                    b.HasIndex("ItemTypeId");
+
+                    b.HasIndex("MachineTypeId");
+
+                    b.ToTable("ItemHists");
                 });
 
             modelBuilder.Entity("PDMAngular.Models.ItemType", b =>
@@ -124,6 +183,24 @@ namespace PDMAngular.Migrations
 
                     b.HasOne("PDMAngular.Models.MachineType", "MachineType")
                         .WithMany("Items")
+                        .HasForeignKey("MachineTypeId")
+                        .OnDelete(DeleteBehavior.Cascade);
+                });
+
+            modelBuilder.Entity("PDMAngular.Models.ItemHist", b =>
+                {
+                    b.HasOne("PDMAngular.Models.Item", "Item")
+                        .WithMany("ItemHists")
+                        .HasForeignKey("ItemId")
+                        .OnDelete(DeleteBehavior.Restrict);
+
+                    b.HasOne("PDMAngular.Models.ItemType", "ItemType")
+                        .WithMany("ItemHists")
+                        .HasForeignKey("ItemTypeId")
+                        .OnDelete(DeleteBehavior.Cascade);
+
+                    b.HasOne("PDMAngular.Models.MachineType", "MachineType")
+                        .WithMany("ItemHists")
                         .HasForeignKey("MachineTypeId")
                         .OnDelete(DeleteBehavior.Cascade);
                 });
