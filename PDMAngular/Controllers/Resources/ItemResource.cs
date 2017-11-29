@@ -1,5 +1,5 @@
 ﻿using PDMAngular.Models;
-using System.ComponentModel.DataAnnotations;
+using System;
 
 namespace PDMAngular.Controllers.Resources
 {
@@ -7,8 +7,6 @@ namespace PDMAngular.Controllers.Resources
     {
         public int Id { get; set; }
 
-        [Required]
-        [StringLength(50)]
         public string InternalCode { get; set; }
 
         public string Description { get; set; }
@@ -23,19 +21,19 @@ namespace PDMAngular.Controllers.Resources
 
         public bool Elastic { get; set; }
 
-        [Required]
-        [StringLength(150)]
         public string MadeBy { get; set; }
+
+        public DateTime CreateDate { get; set; }
 
         public string Color { get; set; }
 
         public string Name { get; set; }
 
-        public string UserId { get; set; }
+        public DateTime? UpdateDate { get; set; }
 
-        public int ItemTypeId { get; set; }
+        public KeyValuePairResource ItemType { get; set; }
 
-        public int MachineTypeId { get; set; }
+        public MachineTypeResource MachineType { get; set; }
 
         public Status Status { get; set; }
 

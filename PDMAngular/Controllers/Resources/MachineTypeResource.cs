@@ -1,16 +1,7 @@
-﻿using System.ComponentModel.DataAnnotations;
-
-namespace PDMAngular.Controllers.Resources
+﻿namespace PDMAngular.Controllers.Resources
 {
-    public class MachineTypeResource
+    public class MachineTypeResource : KeyValuePairResource
     {
-        public int Id { get; set; }
 
-        public string Description { get; set; }
-
-        [Required]
-        public string Name { get; set; }
-
-        public string UserId { get; set; }
     }
 }
