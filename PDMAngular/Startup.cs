@@ -22,6 +22,13 @@ namespace PDMAngular
         public void ConfigureServices(IServiceCollection services)
         {
 
+            services.AddScoped<IUnitOfWork, UnitOfWork>();
+
+            services.AddScoped<IItemRepository, ItemRepository>();
+            services.AddScoped<IItemHistRepository, ItemHistRepository>();
+            services.AddScoped<IItemTypeRepository, ItemTypeRepository>();
+            services.AddScoped<IMachineTypeRepository, MachineTypeRepository>();
+
             services.AddAutoMapper();
 
             services.AddDbContext<PdmDbContext>(options =>
