@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
-using System.ComponentModel.DataAnnotations;
 
 namespace PDMAngular.Models
 {
@@ -13,8 +12,6 @@ namespace PDMAngular.Models
 
         public string Description { get; set; }
 
-        [Required]
-        [StringLength(150)]
         public string Name { get; set; }
 
         public DateTime? UpdateDate { get; set; }
@@ -23,9 +20,12 @@ namespace PDMAngular.Models
 
         public ICollection<Item> Items { get; set; }
 
+        public ICollection<ItemHist> ItemHists { get; set; }
+
         public ItemType()
         {
             Items = new Collection<Item>();
+            ItemHists = new Collection<ItemHist>();
         }
     }
 }

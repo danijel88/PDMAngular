@@ -1,5 +1,6 @@
 ﻿using System;
-using System.ComponentModel.DataAnnotations;
+using System.Collections.Generic;
+using System.Collections.ObjectModel;
 
 namespace PDMAngular.Models
 {
@@ -7,8 +8,6 @@ namespace PDMAngular.Models
     {
         public int Id { get; set; }
 
-        [Required]
-        [StringLength(50)]
         public string InternalCode { get; set; }
 
         public string Description { get; set; }
@@ -23,10 +22,8 @@ namespace PDMAngular.Models
 
         public bool Elastic { get; set; }
 
-        [Required]
-        [StringLength(150)]
         public string MadeBy { get; set; }
-        
+
         public DateTime CreateDate { get; set; }
 
         public string Color { get; set; }
@@ -34,7 +31,7 @@ namespace PDMAngular.Models
         public string Name { get; set; }
 
         public DateTime? UpdateDate { get; set; }
-        
+
         public string UserId { get; set; }
 
         public ItemType ItemType { get; set; }
@@ -46,6 +43,13 @@ namespace PDMAngular.Models
         public int MachineTypeId { get; set; }
 
         public Status Status { get; set; }
+
+        public ICollection<ItemHist> ItemHists { get; set; }
+
+        public Item()
+        {
+            ItemHists = new Collection<ItemHist>();
+        }
 
     }
 }
