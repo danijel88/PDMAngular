@@ -2,7 +2,7 @@
 
 namespace PDMAngular.Controllers.Resources
 {
-    public class ItemTypeResource
+    public class KeyValuePairResource
     {
         public int Id { get; set; }
 
