@@ -1,6 +1,5 @@
 ﻿using AutoMapper;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.EntityFrameworkCore;
 using PDMAngular.Controllers.Resources;
 using PDMAngular.Models;
 using PDMAngular.Persistence;
@@ -13,14 +12,18 @@ namespace PDMAngular.Controllers
     [Route("/api/machinetypes")]
     public class MachineTypesController : Controller
     {
-        private readonly PdmDbContext _context;
-        private readonly IMapper _mapper;
 
-        public MachineTypesController(PdmDbContext context,
-            IMapper mapper)
+        private readonly IMapper _mapper;
+        private readonly IMachineTypeRepository _repository;
+        private readonly IUnitOfWork _unitOfWork;
+
+        public MachineTypesController(IUnitOfWork unitOfWork,
+            IMapper mapper,
+            IMachineTypeRepository repository)
         {
-            _context = context;
             _mapper = mapper;
+            _repository = repository;
+            _unitOfWork = unitOfWork;
         }
 
         [HttpPost]
@@ -33,8 +36,8 @@ namespace PDMAngular.Controllers
 
             machineType.CreateDate = DateTime.Now;
 
-            _context.MachineTypes.Add(machineType);
-            await _context.SaveChangesAsync();
+            _repository.Add(machineType);
+            await _unitOfWork.CompleteAsync();
 
             var result = _mapper.Map<MachineType, MachineTypeResource>(machineType);
             return Ok(result);
@@ -47,12 +50,12 @@ namespace PDMAngular.Controllers
             if (!ModelState.IsValid)
                 return BadRequest(ModelState);
 
-            var machineType = await _context.MachineTypes.FindAsync(id);
+            var machineType = await _repository.GetMachineTypeAsync(id);
             _mapper.Map<MachineTypeResource, MachineType>(machineTypeResource);
 
             machineType.UpdateDate = DateTime.Now;
 
-            await _context.SaveChangesAsync();
+            await _unitOfWork.CompleteAsync();
 
             var result = _mapper.Map<MachineType, MachineTypeResource>(machineType);
             return Ok(result);
@@ -62,9 +65,9 @@ namespace PDMAngular.Controllers
         [HttpGet]
         public async Task<IEnumerable<MachineTypeResource>> GetMachineTypes()
         {
-            var machineTypes = await _context.MachineTypes.ToListAsync();
+            var machineTypes = await _repository.GetMachineTypesAsync();
 
-            return _mapper.Map<List<MachineType>, List<MachineTypeResource>>(machineTypes);
+            return _mapper.Map<IEnumerable<MachineType>, IEnumerable<MachineTypeResource>>(machineTypes);
         }
     }
 }
