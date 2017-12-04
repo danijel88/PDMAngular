@@ -275,6 +275,11 @@
       "integrity": "sha1-TgzvrQnfXsSMjdQEM1EvhLFWjWE=",
       "dev": true
     },
+    "@types/underscore": {
+      "version": "1.8.5",
+      "resolved": "https://registry.npmjs.org/@types/underscore/-/underscore-1.8.5.tgz",
+      "integrity": "sha512-7uT7cvLf0saZ4NOsqwG/vu4nyvkvjwibMGGxDEsUkBdaqkq/8apWCnKEpRvcJesO7AnTo+xLqj9/dElDETiT5Q=="
+    },
     "@types/webpack-env": {
       "version": "1.13.0",
       "resolved": "https://registry.npmjs.org/@types/webpack-env/-/webpack-env-1.13.0.tgz",
@@ -5212,6 +5217,11 @@
       "integrity": "sha1-KzJxhOiZIQEXeyhWP7XnECrNDKk=",
       "dev": true
     },
+    "ng2-toasty": {
+      "version": "4.0.3",
+      "resolved": "https://registry.npmjs.org/ng2-toasty/-/ng2-toasty-4.0.3.tgz",
+      "integrity": "sha1-6njvjRh1fUHrq6Eb2fkKVD9Y/Xo="
+    },
     "no-case": {
       "version": "2.3.1",
       "resolved": "https://registry.npmjs.org/no-case/-/no-case-2.3.1.tgz",
@@ -8337,6 +8347,11 @@
       "resolved": "https://registry.npmjs.org/ultron/-/ultron-1.0.2.tgz",
       "integrity": "sha1-rOEWq1V80Zc4ak6I9GhTeMiy5Po=",
       "dev": true
+    },
+    "underscore": {
+      "version": "1.8.3",
+      "resolved": "https://registry.npmjs.org/underscore/-/underscore-1.8.3.tgz",
+      "integrity": "sha1-Tz+1OxBuYJf8+ctBCfKl6b36UCI="
     },
     "union-value": {
       "version": "0.2.4",
