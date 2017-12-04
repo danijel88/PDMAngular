@@ -1,8 +1,8 @@
 ﻿using AutoMapper;
 using Microsoft.AspNetCore.Mvc;
 using PDMAngular.Controllers.Resources;
-using PDMAngular.Models;
-using PDMAngular.Persistence;
+using PDMAngular.Core;
+using PDMAngular.Core.Models;
 using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;

@@ -1,5 +1,5 @@
 ﻿using Microsoft.EntityFrameworkCore;
-using PDMAngular.Models;
+using PDMAngular.Core.Models;
 
 namespace PDMAngular.Persistence
 {

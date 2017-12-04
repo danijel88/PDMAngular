@@ -1,6 +1,6 @@
 ﻿using AutoMapper;
 using PDMAngular.Controllers.Resources;
-using PDMAngular.Models;
+using PDMAngular.Core.Models;
 
 namespace PDMAngular.Mapping
 {

@@ -1,4 +1,4 @@
-﻿using PDMAngular.Models;
+﻿using PDMAngular.Core.Models;
 using System.ComponentModel.DataAnnotations;
 
 namespace PDMAngular.Controllers.Resources

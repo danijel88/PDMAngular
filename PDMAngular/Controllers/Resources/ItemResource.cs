@@ -1,4 +1,4 @@
-﻿using PDMAngular.Models;
+﻿using PDMAngular.Core.Models;
 using System;
 
 namespace PDMAngular.Controllers.Resources

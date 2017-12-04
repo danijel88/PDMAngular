@@ -1,5 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore;
-using PDMAngular.Models;
+using PDMAngular.Core;
+using PDMAngular.Core.Models;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 
