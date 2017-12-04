@@ -2,65 +2,75 @@
 <p>
     {{item | json}}
 </p>
-<form>
+<form  #f="ngForm" (ngSubmit)="submit()" novalidate>
     <div class="form-group">
         <label for="internalCode">Internal Code</label>
-        <input type="text" value="" class="form-control" />
+        <input type="text" value="" class="form-control"  [(ngModel)]="item.internalCode" name="internalCode" required  #internalCode="ngModel"/>
+        <div class="alert alert-danger" *ngIf="internalCode.touched && !internalCode.valid">Please specify Internal Code</div>
     </div>
     <div class="form-group">
         <label for="nameOnItem">Name On Item</label>
-        <input type="text" value="" class="form-control" />
+        <input type="text" value="" class="form-control" [(ngModel)]="item.name" name="name"/>
     </div>
     <div class="form-group">
         <label for="description">Description</label>
-        <input type="text" value="" class="form-control" />
+        <input type="text" value="" class="form-control" [(ngModel)]="item.description" name="description" />
     </div>
     <div class="form-group">
         <label for="enter">Enter</label>
-        <input type="number" value="" class="form-control" />
+        <input type="number" value="" class="form-control" [(ngModel)]="item.enter" name="enter" />
     </div>
     <div class="form-group">
         <label for="exit">Exit</label>
-        <input type="number" value="" class="form-control" />
+        <input type="number" value="" class="form-control" [(ngModel)]="item.exit" name="exit" />
     </div>
     <div class="form-group">
         <label for="thickness">Thickness</label>
-        <input type="number" value="" class="form-control" />
+        <input type="number" value="" class="form-control"  [(ngModel)]="item.thickness" name="thickness"/>
     </div>
     <div class="form-group">
         <label for="band">Band</label>
-        <input type="number" value="" class="form-control" />
+        <input type="number" value="" class="form-control"  [(ngModel)]="item.band" name="band"/>
     </div>
     <div class="form-group">
         <label for="elastic">Elastic</label>
-        <input type="checkbox" class="form-control" name="elastic" />
+        <input type="checkbox" class="form-control" name="elastic" [(ngModel)]="item.elastic"  />
     </div>
     <div class="form-group">
         <label for="color">Color</label>
-        <input type="text" class="form-control" />
+        <input type="text" class="form-control" [(ngModel)]="item.color" name="color" />
     </div>
     <div class="form-group">
         <label for="madeBy">Made By</label>
-        <input type="text" class="form-control" />
+        <input type="text" class="form-control" [(ngModel)]="item.madeBy" name="madeBy" required #madeBy="ngModel" />
+        <div class="alert alert-danger" *ngIf="madeBy.touched && !madeBy.valid">Please specify Made By</div>
     </div>
     <div class="form-group">
         <label for="status">Status</label>
-
+        <select class="form-control" [(ngModel)]="item.status" name="status" required #status="ngModel">
+            <option value="0">Approved</option>
+            <option value="1">Rejected</option>
+            <option value="2">Testing</option>
+        </select>
+        <div class="alert alert-danger" *ngIf="status.touched && !status.valid">Please specify Status</div>
     </div>
     <div class="form-group">
         <label for="itemType">Item Type</label>
-        <select id="itemType" class="form-control" [(ngModel)]="item.itemType" name="itemType">
+        <select id="itemType" class="form-control" [(ngModel)]="item.itemTypeId" name="itemTypeId" required #itemType="ngModel">
             <option></option>
             <option *ngFor="let it of itemTypes" value="{{it.id}}">{{it.name}}</option>
         </select>
+        <div class="alert alert-danger" *ngIf="itemType.touched && !itemType.valid">Please specify Item Type</div>
     </div>
     <div class="form-group">
         <label for="machineType">Machine Type</label>
-        <select class="form-control" [(ngModel)]="item.machineType" name="machineType">
+        <select class="form-control" [(ngModel)]="item.machineTypeId" name="machineTypeId" required #machineType="ngModel">
             <option></option>
             <option *ngFor="let mt of machineTypes" value="{{mt.id}}">{{mt.name}}</option>
         </select>
+        <div class="alert alert-danger" *ngIf="machineType.touched && !machineType.valid">Please specify Machine Type</div>
     </div>
 
+    <button class="btn btn-primary" [disabled]="!f.valid" >Save</button>
 
 </form>
