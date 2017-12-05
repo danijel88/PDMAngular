@@ -54,18 +54,16 @@ namespace PDMAngular.Controllers
             if (!ModelState.IsValid)
                 return BadRequest(ModelState);
 
-            var item = await _repository.GetItem(id);
+            var item = await _repository.GetItem(id, includeRelated: false);
 
             if (item == null)
                 return NotFound();
 
-            _mapper.Map<SaveItemResource, Item>(itemResource, item);
+            item = _mapper.Map<SaveItemResource, Item>(itemResource, item);
 
             item.UpdateDate = DateTime.Now;
 
             await _unitOfWork.CompleteAsync();
-
-
 
             var result = _mapper.Map<Item, ItemResource>(item);
 
@@ -111,11 +109,16 @@ namespace PDMAngular.Controllers
 
         private async Task<bool> CreateItemHist(int id, [FromBody] SaveItemResource itemResource)
         {
-            var itemHist = _mapper.Map<SaveItemResource, ItemHist>(itemResource);
 
-            itemHist.ItemId = id;
+            var itemHist = _mapper.Map<SaveItemResource, SaveItemHistResource>(itemResource);
 
-            _itemHistRepository.Add(itemHist);
+            var item = _mapper.Map<SaveItemHistResource, ItemHist>(itemHist);
+
+            item.ItemId = id;
+            item.CreateDate = DateTime.Now;
+
+
+            _itemHistRepository.Add(item);
 
             await _unitOfWork.CompleteAsync();
 
