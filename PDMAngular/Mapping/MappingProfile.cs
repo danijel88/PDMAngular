@@ -8,6 +8,9 @@ namespace PDMAngular.Mapping
     {
         public MappingProfile()
         {
+            //Resource to Resource
+            CreateMap<SaveItemResource, SaveItemHistResource>();
+
             //Domain to API Resource
             CreateMap<ItemType, KeyValuePairResource>();
             CreateMap<MachineType, MachineTypeResource>();
@@ -25,6 +28,7 @@ namespace PDMAngular.Mapping
             CreateMap<MachineTypeResource, MachineType>();
             CreateMap<SaveItemResource, ItemHist>();
             CreateMap<ItemResource, Item>();
+            CreateMap<SaveItemHistResource, ItemHist>();
 
 
         }
