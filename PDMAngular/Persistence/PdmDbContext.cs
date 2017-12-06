@@ -73,6 +73,12 @@ namespace PDMAngular.Persistence
                 .IsUnique(true);
 
 
+                entity.Property(i => i.ItemTypeId)
+                .IsRequired();
+
+                entity.Property(i => i.MachineTypeId)
+                .IsRequired();
+
                 entity.Property(i => i.InternalCode)
                 .IsRequired()
                 .HasMaxLength(50);

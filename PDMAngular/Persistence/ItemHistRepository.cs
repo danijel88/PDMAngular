@@ -1,6 +1,8 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using PDMAngular.Core;
 using PDMAngular.Core.Models;
+using System.Collections.Generic;
+using System.Linq;
 using System.Threading.Tasks;
 
 namespace PDMAngular.Persistence
@@ -29,6 +31,14 @@ namespace PDMAngular.Persistence
         public void Remove(ItemHist itemHist)
         {
             _context.ItemHists.Remove(itemHist);
+        }
+
+        public async Task<IEnumerable<ItemHist>> GetItemHistListAsync(int id)
+        {
+            return await _context
+                .ItemHists
+                .Where(ih => ih.ItemId == id)
+                .ToListAsync();
         }
     }
 }

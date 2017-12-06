@@ -22,6 +22,7 @@ namespace PDMAngular.Mapping
 
 
             //API Resource to Domain
+            CreateMap<ItemQueryResource, ItemQuery>();
             CreateMap<SaveItemResource, Item>()
                 .ForMember(i => i.Id, opt => opt.Ignore());
             CreateMap<KeyValuePairResource, ItemType>();
