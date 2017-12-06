@@ -48,9 +48,9 @@
     <div class="form-group">
         <label for="status">Status</label>
         <select class="form-control" [(ngModel)]="item.status" name="status" required #status="ngModel">
-            <option value="0">Approved</option>
-            <option value="1">Rejected</option>
-            <option value="2">Testing</option>
+            <option value="Approved">Approved</option>
+            <option value="Rejected">Rejected</option>
+            <option value="Testing">Testing</option>
         </select>
         <div class="alert alert-danger" *ngIf="status.touched && !status.valid">Please specify Status</div>
     </div>
@@ -72,5 +72,6 @@
     </div>
 
     <button class="btn btn-primary" [disabled]="!f.valid" >Save</button>
+    <button *ngIf="item.id"class="btn btn-danger" type="button" (click)="delete()">Delete</button>
 
 </form>

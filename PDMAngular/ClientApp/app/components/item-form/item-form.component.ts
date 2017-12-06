@@ -32,7 +32,7 @@ export class ItemFormComponent implements OnInit {
         itemTypeId: 0,
         elastic: false,
         name: '',
-        status:0
+        status: 0
     };
 
     constructor(
@@ -46,7 +46,7 @@ export class ItemFormComponent implements OnInit {
         route.params.subscribe(p => {
             this.item.id = +p['id'] || 0;
         });
-        
+
     }
 
     ngOnInit() {
@@ -58,23 +58,23 @@ export class ItemFormComponent implements OnInit {
 
         if (this.item.id)
             sources.push(this.itemService.getItem(this.item.id));
-        
+
 
 
         Observable.forkJoin(sources).subscribe(data => {
             this.itemTypes = data[0];
             this.machineTypes = data[1];
             if (this.item.id)
-            this.setItem(data[2]);
-            }, err => {
-                if (err.status == 404)
-                    this.router.navigate(['/home'])
-            });
-        
+                this.setItem(data[2]);
+        }, err => {
+            if (err.status == 404)
+                this.router.navigate(['/home'])
+        });
+
     }
 
     submit() {
-        
+
         if (this.item.id) {
             this.itemService.updateItem(this.item)
                 .subscribe(x => {
@@ -83,18 +83,19 @@ export class ItemFormComponent implements OnInit {
                         msg: 'The Item was successfully updated.',
                         theme: 'bootstrap',
                         showClose: true,
-                        timeout:5000
+                        timeout: 5000
                     });
                 });
         } else {
             this.itemService.createItem(this.item)
                 .subscribe(x => this.item = x);
         }
-        
+        //navigate to the list
+        //this.router.navigate(['/item/', this.item.id]);
+
     }
 
-    private setItem(i: Item)
-    {
+    private setItem(i: Item) {
         this.item.id = i.id;
         this.item.internalCode = i.internalCode;
         this.item.description = i.description;
@@ -107,6 +108,16 @@ export class ItemFormComponent implements OnInit {
         this.item.itemTypeId = i.itemType.id;
         this.item.machineTypeId = i.machineType.id;
         this.item.status = i.status;
+    }
+
+    delete()
+    {
+        if (confirm("Are you sure,it will be deleted also all Item History?")) {
+            this.itemService.deleteItem(this.item.id)
+                .subscribe(x => {
+                    this.router.navigate(['/home']);
+                });
+        }
     }
 
 
