@@ -33,10 +33,16 @@
                     </a>
                 </li>
                 <li [routerLinkActive]="['link-active']">
-                    <a [routerLink]="['/item/new']">
+                    <a [routerLink]="['/items/new']">
                         <span class='glyphicon glyphicon-plus'></span> New Item
                     </a>
                 </li>
+                <li [routerLinkActive]="['link-active']"  [routerLinkActiveOptions]="{exact: true}">
+                    <a [routerLink]="['/items']">
+                        <span class='glyphicon glyphicon-list'></span> Items
+                    </a>
+                </li>
+
             </ul>
         </div>
     </div>
