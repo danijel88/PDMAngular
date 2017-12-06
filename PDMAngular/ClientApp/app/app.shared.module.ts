@@ -17,6 +17,7 @@ import { ItemFormComponent } from "./components/item-form/item-form.component";
 import { MachineTypeService } from "./services/machinetype.service";
 import { ItemService } from "./services/item.service";
 import { AppErrorHandler } from "./components/app.error-handler";
+import { ItemListComponent } from "./components/item-list/item-list.component";
 
 
 @NgModule({
@@ -25,6 +26,7 @@ import { AppErrorHandler } from "./components/app.error-handler";
         NavMenuComponent,
         CounterComponent,
         FetchDataComponent,
+        ItemListComponent,
         ItemTypeFormComponent,
         ItemFormComponent,
         HomeComponent
@@ -35,13 +37,14 @@ import { AppErrorHandler } from "./components/app.error-handler";
         FormsModule,
         ToastyModule.forRoot(),
         RouterModule.forRoot([
-            { path: '', redirectTo: 'home', pathMatch: 'full' },
+            { path: '', redirectTo: 'items', pathMatch: 'full' },
             { path: 'home', component: HomeComponent },
             { path: 'counter', component: CounterComponent },
             { path: 'fetch-data', component: FetchDataComponent },
             { path: 'item-types/new', component: ItemTypeFormComponent },
-            { path: 'item/new', component: ItemFormComponent },
-            { path: 'item/:id', component: ItemFormComponent },
+            { path: 'items/new', component: ItemFormComponent },
+            { path: 'items/:id', component: ItemFormComponent },
+            { path: 'items', component: ItemListComponent },
             { path: '**', redirectTo: 'home' }
         ])
     ],
