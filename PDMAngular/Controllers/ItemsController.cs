@@ -4,6 +4,7 @@ using PDMAngular.Controllers.Resources;
 using PDMAngular.Core;
 using PDMAngular.Core.Models;
 using System;
+using System.Collections.Generic;
 using System.Threading.Tasks;
 
 namespace PDMAngular.Controllers
@@ -25,6 +26,23 @@ namespace PDMAngular.Controllers
             _repository = repository;
             _itemHistRepository = itemHistRepository;
             _unitOfWork = unitOfWork;
+        }
+
+        [HttpGet]
+        public async Task<IEnumerable<ItemResource>> GetItems(ItemQueryResource filterResource)
+        {
+            //For client side filtering remove parameters from method GetItesm()
+            //put in comment var filter
+            //and var items should look like this var items = await _repository.GetItems();
+
+            var filter = _mapper.Map<ItemQueryResource, ItemQuery>(filterResource);
+            var items = await _repository.GetItems(filter);
+
+            //if (items == null)
+            //    return NotFound();
+
+            return _mapper.Map<IEnumerable<Item>, IEnumerable<ItemResource>>(items);
+
         }
 
         [HttpPost]
@@ -77,11 +95,14 @@ namespace PDMAngular.Controllers
         {
 
             //Removing item history
-            var itemHists = await _itemHistRepository.GetItemHistAsync(id);
+            var itemHists = await _itemHistRepository.GetItemHistListAsync(id);
             if (itemHists != null)
             {
-                _itemHistRepository.Remove(itemHists);
-                await _unitOfWork.CompleteAsync();
+                foreach (var hist in itemHists)
+                {
+                    _itemHistRepository.Remove(hist);
+                    await _unitOfWork.CompleteAsync();
+                }
             }
 
             //Remove Item
@@ -124,6 +145,8 @@ namespace PDMAngular.Controllers
 
             return true;
         }
+
+
 
 
 

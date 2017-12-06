@@ -1,0 +1,65 @@
+﻿<h2>Items</h2>
+
+<p>
+    <a [routerLink]="['/items/new']" class="btn btn-primary">New Item</a>
+</p>
+<div class="well">
+    <div class="form-group">
+        <label for="itemType">Item Type</label>
+        <select class="form-control" id="itemType" [(ngModel)]="filter.itemTypeId" (change)="onFilterChange()">
+            <option value=""></option>
+            <option *ngFor="let it of itemTypes" value="{{it.id}}">{{it.name}}</option>
+        </select>
+    </div>
+    <div class="form-group">
+        <label for="machineType">Machine Type</label>
+        <select class="form-control" id="machineType" [(ngModel)]="filter.machineTypeId" (change)="onFilterChange()">
+            <option></option>
+            <option *ngFor="let mt of machineTypes" value="{{mt.id}}">{{mt.name}}</option>
+        </select>
+    </div>
+    <div class="form-group">
+        <label for="status">Status</label>
+        <select class="form-control" id="status" [(ngModel)]="filter.status" (change)="onFilterChange()">
+            <option value=""></option>
+            <option value="0">Approved</option>
+            <option value="1">Rejected</option>
+            <option value="2">Testing</option>
+        </select>
+    </div>
+    <div class="form-group">
+        <label for="internalCode">Internal Code</label>
+        <input type="text" class="form-control" id="internalCode" [(ngModel)]="filter.internalCode" (keyup)="onFilterChange()" />
+    </div>
+    <button class="btn btn-default" (click)="resetFilter()">Reset</button>
+</div>
+
+<div *ngFor="let item of items" class="panel panel-info">
+    <div class="panel-heading text-center">
+        #{{item.id}} - {{item.internalCode}}
+    </div>
+    <div class="panel-body">
+        <div class="row">
+            <div class="col-lg-4 col-md-4 col-xs-4 col-sm-4">
+
+            </div>
+            <div class="col-lg-4 col-md-4 col-xs-4 col-sm-4">
+                <div><strong>Item Name: </strong>{{item.name}}</div>
+                <div><strong>Machine Type: </strong>{{item.machineType.name}}</div>
+                <div><strong>Item Type: </strong>{{item.itemType.name}}</div>
+                <div><strong>Made By: </strong>{{item.madeBy}}</div>
+                <div *ngIf="item.status == 0"><strong>Status: </strong>Approved</div>
+                <div *ngIf="item.status == 1"><strong>Status: </strong>Rejected</div>
+                <div *ngIf="item.status == 2"><strong>Status: </strong>Testing</div>
+            </div>
+            <div class="col-lg-4 col-md-4 col-xs-4 col-sm-4">
+                <div><strong>Enter: </strong>{{item.enter}}mm</div>
+                <div><strong>Exit: </strong>{{item.exit}}mm</div>
+                <div><strong>Thickness: </strong>{{item.thickness}}mm</div>
+                <div><strong>Band: </strong>{{item.band}}</div>
+                <div><strong>Elastic: </strong>{{item.elastic}}</div>
+            </div>
+        </div>
+
+    </div>
+</div>
