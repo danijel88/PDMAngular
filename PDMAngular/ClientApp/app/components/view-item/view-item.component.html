@@ -1,0 +1,48 @@
+﻿<h1>Item</h1>
+<div>
+    <!-- Nav tabs -->
+    <ul class="nav nav-tabs" role="tablist">
+        <li role="presentation" class="active"><a href="#basic" aria-controls="basic" role="tab" data-toggle="tab">Item</a></li>
+        <li role="presentation"><a href="#photos" aria-controls="photos" role="tab" data-toggle="tab">Photos</a></li>
+        <li role="presentation"><a href="#history" aria-controls="history" role="tab" data-toggle="tab">History</a></li>
+    </ul>
+    <!-- Tab panes -->
+    <div class="tab-content" *ngIf="item">
+        <div role="tabpanel" class="tab-pane active"  id="basic">
+            <h2>Basics</h2>
+            <ul>
+                <li><strong>Internal Code: </strong>{{item.internalCode}}</li>
+                <li><strong>Item Type: </strong>{{item.itemType.name}}</li>
+                <li><strong>Machine Type: </strong>{{item.machineType.name}}</li>
+                <li><strong>Made By: </strong>{{item.madeBy}}</li>
+                <li *ngIf="item.status == 0"><strong>Status: </strong>Approved</li>
+                <li *ngIf="item.status == 1"><strong>Status: </strong>Rejected</li>
+                <li *ngIf="item.status == 2"><strong>Status: </strong>Testing</li>
+            </ul>
+            <h2>Meassures</h2>
+            <ul>
+                <li><strong>Enter: </strong>{{item.enter}} mm</li>
+                <li><strong>Exit: </strong>{{item.exit}} mm</li>
+                <li><strong>Thickness: </strong>{{item.thickness}} mm</li>
+                <li><strong>Band: </strong>{{item.band}} mm</li>
+                <li><strong>Elastic: </strong>{{item.elastic}}</li>
+            </ul>
+            <h2>PDM</h2>
+            To be implemented
+
+            <p>
+                <a class="btn btn-primary" [routerLink]="['/items/edit/',item.id]">Edit</a>
+                <button *ngIf="item.id" class="btn btn-danger" type="button" (click)="delete()">Delete</button>
+                <a class="btn btn-default" [routerLink]="['/items']">View All Items</a>
+            </p>
+        </div>
+        <!-- Photos tab -->
+        <div role="tabpanel" class="tab-pane" id="photos">
+            <h2>Photos</h2>
+        </div>
+        <!-- Item History tab -->
+        <div role="tabpanel" class="tab-pane" id="history">
+            <h2>History</h2>
+        </div>
+    </div>
+</div>

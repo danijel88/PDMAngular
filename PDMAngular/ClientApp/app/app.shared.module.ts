@@ -18,6 +18,7 @@ import { MachineTypeService } from "./services/machinetype.service";
 import { ItemService } from "./services/item.service";
 import { AppErrorHandler } from "./components/app.error-handler";
 import { ItemListComponent } from "./components/item-list/item-list.component";
+import { ViewItemComponent } from "./components/view-item/view-item.component";
 
 
 @NgModule({
@@ -26,10 +27,11 @@ import { ItemListComponent } from "./components/item-list/item-list.component";
         NavMenuComponent,
         CounterComponent,
         FetchDataComponent,
+        ItemFormComponent,
         ItemListComponent,
         ItemTypeFormComponent,
-        ItemFormComponent,
-        HomeComponent
+        HomeComponent,
+        ViewItemComponent
     ],
     imports: [
         CommonModule,
@@ -43,7 +45,8 @@ import { ItemListComponent } from "./components/item-list/item-list.component";
             { path: 'fetch-data', component: FetchDataComponent },
             { path: 'item-types/new', component: ItemTypeFormComponent },
             { path: 'items/new', component: ItemFormComponent },
-            { path: 'items/:id', component: ItemFormComponent },
+            { path: 'items/edit/:id', component: ItemFormComponent },
+            {path:  'items/:id',component:ViewItemComponent},
             { path: 'items', component: ItemListComponent },
             { path: '**', redirectTo: 'home' }
         ])

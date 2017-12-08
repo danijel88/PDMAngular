@@ -46,9 +46,12 @@ namespace PDMAngular.Core.Models
 
         public ICollection<ItemHist> ItemHists { get; set; }
 
+        public ICollection<Photo> Photos { get; set; }
+
         public Item()
         {
             ItemHists = new Collection<ItemHist>();
+            Photos = new Collection<Photo>();
         }
 
     }

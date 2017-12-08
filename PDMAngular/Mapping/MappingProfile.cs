@@ -12,6 +12,7 @@ namespace PDMAngular.Mapping
             CreateMap<SaveItemResource, SaveItemHistResource>();
 
             //Domain to API Resource
+            CreateMap<Photo, PhotoResource>();
             CreateMap<ItemType, KeyValuePairResource>();
             CreateMap<MachineType, MachineTypeResource>();
             CreateMap<Item, SaveItemResource>();

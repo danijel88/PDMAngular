@@ -12,9 +12,10 @@ using System;
 namespace PDMAngular.Migrations
 {
     [DbContext(typeof(PdmDbContext))]
-    partial class PdmDbContextModelSnapshot : ModelSnapshot
+    [Migration("20171208131019_AddPhotos")]
+    partial class AddPhotos
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder

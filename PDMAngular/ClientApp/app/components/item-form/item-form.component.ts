@@ -110,15 +110,7 @@ export class ItemFormComponent implements OnInit {
         this.item.status = i.status;
     }
 
-    delete()
-    {
-        if (confirm("Are you sure,it will be deleted also all Item History?")) {
-            this.itemService.deleteItem(this.item.id)
-                .subscribe(x => {
-                    this.router.navigate(['/home']);
-                });
-        }
-    }
+
 
 
 }

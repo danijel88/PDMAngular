@@ -9,6 +9,7 @@ namespace PDMAngular.Persistence
         public DbSet<MachineType> MachineTypes { get; set; }
         public DbSet<Item> Items { get; set; }
         public DbSet<ItemHist> ItemHists { get; set; }
+        public DbSet<Photo> Photos { get; set; }
 
         public PdmDbContext(DbContextOptions<PdmDbContext> options) : base(options)
         {
@@ -115,7 +116,17 @@ namespace PDMAngular.Persistence
 
             });
 
+            modelBuilder.Entity<Photo>(entity =>
+            {
+                entity.HasKey(p => p.Id);
 
+                entity.Property(p => p.Id)
+                .ValueGeneratedOnAdd();
+
+                entity.Property(p => p.FileName)
+                .HasMaxLength(255)
+                .IsRequired();
+            });
 
 
 
